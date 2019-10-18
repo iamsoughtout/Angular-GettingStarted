@@ -32,11 +32,17 @@
           </tr>
         </thead>
         <tbody>
-
+          <tr *ngFor='let goat of products'>
+            <td></td>
+            <td>{{ goat.productName}}</td>
+            <td>{{ goat.productCode }}</td>
+            <td>{{ goat.releaseDate }}</td>
+            <td>{{ goat.price }}</td>
+            <td>{{ goat.starRating }}</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
   </div>
-</div>
 <div class='alert alert-danger'></div>

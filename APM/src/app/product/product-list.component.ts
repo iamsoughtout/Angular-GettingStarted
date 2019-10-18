@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
 export class ProductListComponent {
   Amount: string = 'AMOUNT';
   pageTitle: string = 'PRODUCT LIST';
-  products: any[] = [
+  products: any[] = [  // any[] defines that we are expecting any kind of data types
     {
       productId: 1,
       productName: 'Leaf Rake',
       productCode: 'GDN-0011',
       releaseDate: 'March 19, 2019',
       description: 'Leaf rake with 48-inch wooden handle.',
-      price: 19.95,
+      price: 9.95,
       starRating: 3.2,
       imageUrl: 'assets/images/leaf_rake.png'
     },
