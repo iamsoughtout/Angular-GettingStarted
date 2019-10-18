@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 export class ProductListComponent {
   Amount: string = 'AMOUNT';
   pageTitle: string = 'PRODUCT LIST';
+  imageWidth: number = 70;
+  imageMargin: number =  20;
+  imageBorder: string = '2px solid #ddd';
+  imagePadding: number = 4;
+  imageBorderRadius: number = 5;
   products: any[] = [  // any[] defines that we are expecting any kind of data types
     {
       productId: 1,

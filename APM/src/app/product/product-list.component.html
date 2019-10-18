@@ -33,7 +33,25 @@
         </thead>
         <tbody>
           <tr *ngFor='let goat of products'>
-            <td></td>
+            <td>
+
+              <!--PROPERTY BINDING-->
+              <img [src]="goat.imageUrl" alt=""
+              [title] = "goat.productName"
+              style.width.px = {{imageWidth}}
+              [style.margin.px] = "imageMargin"
+              style.height.px = {{imageHeight}}
+              [style.border] = 'imageBorder'
+              style.padding.px = {{imagePadding}}
+              [style.borderRadius.px] = "imageBorderRadius"
+              >
+
+              <!--BINDING USING INTERPOLATION
+              e.g src = {{goat.imageUrl}}
+              title = {{goat.productName}}
+              -->
+
+            </td>
             <td>{{ goat.productName}}</td>
             <td>{{ goat.productCode }}</td>
             <td>{{ goat.releaseDate }}</td>
