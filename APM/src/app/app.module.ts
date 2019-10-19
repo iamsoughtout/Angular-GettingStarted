@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product/product-list.component';
 
+// FormsModule is used for form inputs
+import { FormsModule } from '@angular/forms';
+
 // NOTE: the properties of an NgModule are arrays
 @NgModule({
 
@@ -19,7 +22,8 @@ import { ProductListComponent } from './product/product-list.component';
   // IMPORTS:
   // used to import external modules into the components listed here
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
 
   // BOOTSTRAP:

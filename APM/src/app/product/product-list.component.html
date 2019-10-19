@@ -1,18 +1,21 @@
-<meta >
 <div class='card'>
-  <div class='card-header'>
+  <div class='card-header' >
     {{pageTitle}}
   </div>
   <div class='card-body'>
     <div class='row'>
-      <div class='col-md-2'>FILTER BY: {{Amount}} &nbsp;<i class="fa fa-caret-down"></i></div>
+      <div class='col-md-2'
+      [style.border.px] = "filterMarginTop"
+      [style.border.px] = "imageBorder"
+      >FILTER BY: {{Amount | lowercase}} &nbsp;<i class="fa fa-caret-down"></i></div>
       <div class='col-md-4'>
-        <input type='text' />
+        <input type='text' [(ngModel)] = 'listFilter'/>
       </div>
     </div>
     <div class='row'>
       <div class='col-md-6'>
-        <h4>Filtered by: </h4>
+        <!--using interpolation to bind -->
+        <h4>Filtered by: {{listFilter}}</h4>
       </div>
     </div>
     <div class='table-responsive'></div>
@@ -20,8 +23,8 @@
         <thead>
           <tr>
             <th>
-              <button class='btn btn-primary'>
-                Show Image
+              <button class='btn btn-primary' (click) = 'toggleImage()'>
+                {{showImage ? 'Hide' : 'Show'}} Image
               </button>
             </th>
             <th>Product</th>
@@ -36,7 +39,7 @@
             <td>
 
               <!--PROPERTY BINDING-->
-              <img [src]="goat.imageUrl" alt=""
+              <img *ngIf="showImage" [src]="goat.imageUrl" alt=""
               [title] = "goat.productName"
               style.width.px = {{imageWidth}}
               [style.margin.px] = "imageMargin"
@@ -53,9 +56,9 @@
 
             </td>
             <td>{{ goat.productName}}</td>
-            <td>{{ goat.productCode }}</td>
+            <td>{{ goat.productCode | lowercase}} </td>
             <td>{{ goat.releaseDate }}</td>
-            <td>{{ goat.price }}</td>
+            <td>{{ goat.price | currency: 'USD': 'symbol': '1.2-2'}} </td>
             <td>{{ goat.starRating }}</td>
           </tr>
         </tbody>

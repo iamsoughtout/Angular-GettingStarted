@@ -12,6 +12,10 @@ export class ProductListComponent {
   imageBorder: string = '2px solid #ddd';
   imagePadding: number = 4;
   imageBorderRadius: number = 5;
+  filterMarginTop: string = '1px solid red';
+  showImage: boolean = true; // this property checks whether the images are
+  // currently displayed or not. By setting it to False, the images wont be displayed when the page is first loaded
+  listFilter: string = '';
   products: any[] = [  // any[] defines that we are expecting any kind of data types
     {
       productId: 1,
@@ -34,4 +38,12 @@ export class ProductListComponent {
       imageUrl: 'assets/images/garden_cart.png'
     }
   ];
+
+  // this is the method that the event binding will call when user clicks on 'show
+  // image' button in the template. The method has no return type so we specify the return type as void
+  toggleImage(): void {
+
+    // this method simply toggles the state of the showImage property from true to false
+    this.showImage = !this.showImage
+  }
 }
