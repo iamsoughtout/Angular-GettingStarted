@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IProduct } from './productInterface';
 
 @Component({
   selector: 'pm-product',
@@ -16,7 +17,8 @@ export class ProductListComponent {
   showImage: boolean = true; // this property checks whether the images are
   // currently displayed or not. By setting it to False, the images wont be displayed when the page is first loaded
   listFilter: string = '';
-  products: any[] = [  // any[] defines that we are expecting any kind of data types
+  products: IProduct[] = [  // any[] defines that
+   // we are expecting any kind of data types... // changed to IProduct[] after we create interface
     {
       productId: 1,
       productName: 'Leaf Rake',
