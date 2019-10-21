@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IProduct } from './productInterface';
 
 @Component({
   selector: 'pm-product',
-  templateUrl: './product-list.component.html'
+  templateUrl: './product-list.component.html',
+  styles: ['.filterWrap h4{font-size: 34px; color: blue}', 'th{ text-transform: uppercase; color: green}'],
+  styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   Amount: string = 'AMOUNT';
   pageTitle: string = 'PRODUCT LIST';
   imageWidth: number = 70;
@@ -47,5 +49,8 @@ export class ProductListComponent {
 
     // this method simply toggles the state of the showImage property from true to false
     this.showImage = !this.showImage
+  }
+  ngOnInit(): void {
+    console.log('In OnInit');
   }
 }
