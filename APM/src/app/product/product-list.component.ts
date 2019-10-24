@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './productInterface';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'pm-product',
@@ -42,47 +43,24 @@ export class ProductListComponent implements OnInit {
 
   // this is a property for filtered list of products that we can bind to
   filteredProducts: IProduct[];
-  products: IProduct[] = [  // any[] defines that
-   // we are expecting any kind of data types... // ...this was changed to IProduct[] after we create interface
-    {
-      productId: 1,
-      productName: 'Leaf Rake',
-      productCode: 'GDN-0011',
-      releaseDate: 'March 19, 2019',
-      description: 'Leaf rake with 48-inch wooden handle.',
-      price: 9.95,
-      starRating: 3.2,
-      imageUrl: 'assets/images/leaf_rake.png'
-    },
-    {
-      productId: 2,
-      productName: 'Garden Cart',
-      productCode: 'GDN-0023',
-      releaseDate: 'March 18, 2019',
-      description: '15 gallon capacity rolling garden cart',
-      price: 32.99,
-      starRating: 4.2,
-      imageUrl: 'assets/images/garden_cart.png'
-    }
-  ];
+  products: IProduct[] = [ ];
+  /* any[] defines that
+    we are expecting any kind of data types... This was changed to IProduct[] after we create interface
 
-  // this is the method that the event binding will call when user clicks on 'show
-  // image' button in the template. The method has no return type so we specify the return type as void
+    ---------------------------------------------
+
+  this is the method that the event binding will call when user clicks on 'show
+  image' button in the template. The method has no return type so we specify the return type as void */
+
   toggleImage(): void {
 
     // this method simply toggles the state of the showImage property from true to false
     this.showImage = !this.showImage
   }
-  ngOnInit(): void {
-    console.log('In OnInit');
-  }
 
   // setting default value for both the filtered list and the listFilter properties.
   // the constructor() is the function that gets executed when the component is first initialized
-  constructor() {
-    this.filteredProducts = this.products;
-    this.listFilter = 'cart';
-  }
+  constructor(private productService: ProductService) { }
 
 performFilter(filterBy: string): IProduct[] {
 
@@ -98,5 +76,15 @@ performFilter(filterBy: string): IProduct[] {
   }
   onNotify(message: string): void {
     this.pageTitle = 'Product List: ' + message;
+  }
+
+  // ngOnInit() life cycle hook handles all component initialization and is also a great place to handle fetching of data from the server.
+  ngOnInit(): void {
+    // this is the code to call the service. Always call the service from ngOnInit()
+
+    /*We set the products property to the products returned from our serivice, i.e. the
+    // productService server instance. put a dot (.) and call the getProduct method */
+    this.products = this.productService.getProducts();
+    this.filteredProducts = this.products;
   }
 }
