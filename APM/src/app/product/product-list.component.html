@@ -59,7 +59,7 @@
             <td>{{ goat.productCode | lowercase | convertToSpaces: '-'}} </td>
             <td>{{ goat.releaseDate }}</td>
             <td>{{ goat.price | currency: 'USD': 'symbol': '1.2-2'}} </td>
-            <td><pm-star [rating] = 'goat.starRating'></pm-star></td>
+            <td><pm-star [rating] = 'goat.starRating' (ratingClicked) = 'onNotify($event)'></pm-star></td>
           </tr>
         </tbody>
       </table>
