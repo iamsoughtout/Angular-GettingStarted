@@ -6,6 +6,7 @@ import { ProductListComponent } from './product/product-list.component';
 // FormsModule is used for form inputs
 import { FormsModule } from '@angular/forms';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces-pipe';
+import { StarComponent } from './shared/star.component';
 
 // NOTE: the properties of an NgModule are arrays
 @NgModule({
@@ -18,7 +19,8 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces-pipe';
   declarations: [
     AppComponent,
     ProductListComponent,
-    ConvertToSpacesPipe
+    ConvertToSpacesPipe,
+    StarComponent
   ],
 
   // IMPORTS:
