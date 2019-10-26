@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';   //
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { ProductListComponent } from './product/product-list.component';
-
 // FormsModule is used for form inputs
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppComponent } from './app.component';
+import { ProductListComponent } from './product/product-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces-pipe';
 import { StarComponent } from './shared/star.component';
 
@@ -27,7 +28,8 @@ import { StarComponent } from './shared/star.component';
   // used to import external modules into the components listed here
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
 
   // BOOTSTRAP:

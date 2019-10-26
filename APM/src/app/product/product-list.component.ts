@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
   filterMarginTop: string = '1px solid red';
   showImage: boolean = true; // this property checks whether the images are
   // currently displayed or not. By setting it to False, the images wont be displayed when the page is first loaded
+  errorMessage: string; // error message for when there is an error
 
   // we need a way to  know when the user changes his filter params.
   // we do this by changing the list filtered property into a getter and setter
@@ -55,7 +56,7 @@ export class ProductListComponent implements OnInit {
   toggleImage(): void {
 
     // this method simply toggles the state of the showImage property from true to false
-    this.showImage = !this.showImage
+    this.showImage = !this.showImage;
   }
 
   // setting default value for both the filtered list and the listFilter properties.
@@ -84,7 +85,17 @@ performFilter(filterBy: string): IProduct[] {
 
     /*We set the products property to the products returned from our serivice, i.e. the
     // productService server instance. put a dot (.) and call the getProduct method */
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
+    this.productService.getProducts().subscribe({
+
+      /*when the observable emits the data, we set our product property to the returned array of products*/
+      // NOTE: the below code can also be written as:
+      // next(next)
+      next: products => {
+        this.products = products,
+        this.filteredProducts = this.products;
+      },
+      // throw out an error, which has already been defined as a string
+      error: err => this.errorMessage = err
+    });
   }
 }
